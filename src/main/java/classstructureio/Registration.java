@@ -3,7 +3,7 @@ package classstructureio;
 import java.util.Scanner;
 
 public class Registration {
-    public static void main(String[] args) {
+    public static void maPin(String[] args) {
         System.out.println("What is your full name?");
         Scanner scanner = new Scanner (System.in);
         String name = scanner.nextLine();
