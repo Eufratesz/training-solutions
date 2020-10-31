@@ -1,16 +1,30 @@
 package training;
 
 public class TrianerMain {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
         Trainer trainer = new Trainer();
-        trainer.name = "John Doe";
-        trainer.yearOfBirth = 1980;
-        System.out.println(trainer.name);
-        System.out.println(trainer.yearOfBirth);
+        trainer.setName("John Doe");
+        trainer.setYearOfBirth(1980);
+        System.out.println(trainer.getName());
+        System.out.println(trainer.getYearOfBirth());
 
         Trainer anotherTrainer = new Trainer();
-        anotherTrainer.name = "Jack Doe";
-        System.out.println(anotherTrainer.name);
+        anotherTrainer.setName("Jack Doe");
+        anotherTrainer.setYearOfBirth(1981);
+        System.out.println(anotherTrainer.getName());
+
+        System.out.println(anotherTrainer.getName());
+        System.out.println(anotherTrainer.getNameAndYearOfBirth());
+
+        anotherTrainer.changeName("Joe Doe");
+        System.out.println(anotherTrainer.getName());
+
+        anotherTrainer.setName("Jack Doe");
+        System.out.println(anotherTrainer.getName());
+
+
     }
+
+
 }

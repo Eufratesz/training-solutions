@@ -2,9 +2,32 @@ package training;
 
 public class Trainer {
 
-    String name;
+    private String name;
 
-    int yearOfBirth;
+    private int yearOfBirth;
 
+    public String getName() {
+        return name;
+    }
 
+    public String getNameAndYearOfBirth() {
+        return name + " " + yearOfBirth;
+    }
+
+    public void changeName(String newName) {
+        name = newName;
+
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
 }
