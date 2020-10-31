@@ -21,7 +21,6 @@ public class ClientMain {
         System.out.println("Your name: " + name);
         System.out.println("Your address: " + address);
         System.out.println("Your year of birth: " + year);
-
     }
 }
 
