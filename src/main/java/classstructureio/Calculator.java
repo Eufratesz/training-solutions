@@ -14,7 +14,8 @@ public class Calculator {
         System.out.println("Let's do the addition!");
         System.out.println(firstNumber + " + " +  secondNumber);
         int totalAmount = firstNumber + secondNumber;
-        System.out.println(totalAmount);
+
+        System.out.println("The total amount is: " + totalAmount);
 
         /*
         Másik megoldás az utolsó 2 sor helyett:
