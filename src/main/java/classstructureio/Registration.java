@@ -3,7 +3,7 @@ package classstructureio;
 import java.util.Scanner;
 
 public class Registration {
-    public static void maPin(String[] args) {
+    public static void main(String[] args) {
         System.out.println("What is your full name?");
         Scanner scanner = new Scanner (System.in);
         String name = scanner.nextLine();
@@ -17,7 +17,3 @@ public class Registration {
     }
 }
 
-
-/*
-A main metódusban kérd be a felhasználótól a nevét és az email címét, majd írd ki, hogy milyen adatokkal regisztrált!
- */

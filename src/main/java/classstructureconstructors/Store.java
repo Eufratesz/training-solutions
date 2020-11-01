@@ -27,10 +27,3 @@ public class Store {
 
 }
 
-
-/*
- public void register(String regNumber) {
-        this.regNumber = regNumber;
-    }
-
- */

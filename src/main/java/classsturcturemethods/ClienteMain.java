@@ -18,8 +18,3 @@ public class ClienteMain {
         System.out.println("Your address has officially been changed!");
     }
 }
-/*
-public void changeName(String newName) {
-        name = newName;
-
- */

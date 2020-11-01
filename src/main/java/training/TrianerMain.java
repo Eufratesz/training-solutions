@@ -1,16 +1,22 @@
 package training;
 
+import java.util.Scanner;
+
 public class TrianerMain {
 
     public static void main(String[] args) {
-        Trainer trainer = new Trainer( "John Doe", 1980 );
+        System.out.println("What is your name?");
+        Scanner scanner =new Scanner(System.in);
+        String name = scanner.nextLine();
 
-        System.out.println(trainer.getName());
-        System.out.println(trainer.getYearOfBirth());
+        System.out.println("Year of birth?");
+        int yearOfBirth = scanner.nextInt();
 
-        Trainer anotherTrainer = new Trainer("Jack Doe", 1981);
-        System.out.println(anotherTrainer.getName());
-        System.out.println(anotherTrainer.getYearOfBirth());
+        Trainer trainer = new Trainer (name, yearOfBirth);
+
+        System.out.println(trainer.getNameAndYearOfBirth());
+
+
 
     }
 
