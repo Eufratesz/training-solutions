@@ -24,22 +24,8 @@ public class Book {
     }
 
     public void register(String regNumber) {
-
+        this.regNumber = regNumber;
     }
 
 
 }
-
-
-
-
-
-/*
-
-
-Legyen egy public void register(String regNumber) metódusa, mely a nyilvántartásba vételt implementálja,
-és ennek paraméterül kell megadni a regisztrációs számot.
-
-Írj egy main() metódust a BookMain osztályba, amivel kipróbálod a működését!
-Az attribútumok kiolvasásához használj gettereket!
- */
