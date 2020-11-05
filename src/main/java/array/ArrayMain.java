@@ -2,36 +2,49 @@ package array;
 
 public class ArrayMain {
     public static void main(String[] args) {
+        String[] daysOfTheWeek = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 
-        String daysOfTheWeek[] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
         System.out.println(daysOfTheWeek[1]);
         System.out.println(daysOfTheWeek.length);
 
+        System.out.println();
 
-        int power[] = {1, 2, 4, 8, 16};
-        for(int i = 0; i< power.length; i++) {
-            System.out.println(power [i]);
+
+        int[] powers = new int[5];
+        powers[0] = 1;          //az első elemet beállítom 1-nek.
+
+        for (int i = 1; i < powers.length; i++) {
+            powers[i] = powers[i - 1] * 2;
         }
 
-        for(int item: power) {
-            System.out.println(item);
+        for (int i = 0; i < powers.length; i++) {
+            System.out.println(powers[i] + " ");
         }
 
+        System.out.println();
 
 
-        boolean b[] = {false, true, false, true, false, true};
-        for(int i = 0; i < b.length; i++) {
-            System.out.println(b[i]);
+        boolean[] boo = new boolean[6];
+
+        for (int i = 1; i < boo.length; i++) {
+            boo[i] = !boo[i - 1];
         }
 
-
-        for(boolean item: b) {
-            System.out.println(item);
+        for (int i = 0; i < boo.length; i++) {
+            System.out.println(boo[i] + " ");
         }
-
-
-
-
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
 }
