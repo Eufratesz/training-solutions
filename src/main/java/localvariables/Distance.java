@@ -18,3 +18,4 @@ public class Distance {
         return exact;
     }
 }
+//DistanceMain képmetszővel kivágva, elmentve. Hibás valami nagyon.

@@ -7,8 +7,8 @@ public class LocalVariablesMain {
         System.out.println(b);
 
         int a = 2;
-        int i = 3;
-        int j = 4;
+        int i = 3; int j = 4;
+
         int k = i;
         System.out.println(k);
 
