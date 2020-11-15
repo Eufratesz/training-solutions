@@ -1,17 +1,27 @@
 package classsturcturemethods;
 
+import java.util.Scanner;
+
 public class NoteMain {
     public static void main(String[] args) {
-        Note note = new Note();
+      Note note = new Note();
+      Scanner scanner = new Scanner(System.in);
 
-        note.setName("Julia Roberts");
-        note.setTopic("Films");
-        note.setText("I enjoyed filming Pretty woman!");
-/*
-        System.out.println(note.getName());
-        System.out.println(note.getTopic());
-        System.out.println(note.getText());
-*/
+        System.out.println("Your name: ");
+        String name =  scanner.nextLine();
+        note.setName(name);
+
+        System.out.println("Topic: ");
+        String topic = scanner.nextLine();
+        note.setTopic(topic);
+
+        System.out.println("Text: ");
+        String text = scanner.nextLine();
+        note.setText(text);
+        System.out.println();
+
         System.out.println(note.getNoteText());
+
+
     }
 }
