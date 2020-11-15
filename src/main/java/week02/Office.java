@@ -3,8 +3,9 @@ package week02;
 import java.util.List;
 
 public class Office {
- //   Office office = new Office;
-   // List<String> MeetingRooms =
+   //Office office = new Office()
+
+  // List<String> MeetingRooms =
 
 
             /*
