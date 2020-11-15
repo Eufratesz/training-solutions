@@ -24,4 +24,11 @@ public class Trainer {
     public void setYearOfBirth(int yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
     }
+
+
+//UMl- változathoz:
+
+    public String getNameAndYearOfBirth() {
+        return name + " " + yearOfBirth;
+    }
 }
