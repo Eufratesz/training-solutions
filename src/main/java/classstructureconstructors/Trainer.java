@@ -31,4 +31,8 @@ public class Trainer {
     public String getNameAndYearOfBirth() {
         return name + " " + yearOfBirth;
     }
+
+    public int getAge() {
+        return 2020 - yearOfBirth;
+    }
 }

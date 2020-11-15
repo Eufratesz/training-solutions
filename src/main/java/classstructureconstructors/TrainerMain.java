@@ -30,5 +30,7 @@ public class TrainerMain{
         Trainer trainer = new Trainer(name, yearOfBirth);
 
         System.out.println(trainer.getNameAndYearOfBirth());
+
+        System.out.println(name + ", " + "you are " + trainer.getAge() + " years old.");
     }
 }
