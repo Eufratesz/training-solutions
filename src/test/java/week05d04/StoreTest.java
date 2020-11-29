@@ -28,5 +28,6 @@ public class StoreTest {
         Store store = new Store(testList);
 
         assertEquals(1, store.getNumberOfExpired());
+        assertEquals(false, store.addProduct(new Product("milk", 2020, 12, 31)));
     }
 }
