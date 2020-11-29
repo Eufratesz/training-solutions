@@ -20,7 +20,7 @@ public class ChangeLetter {
         return stringBuilder.toString();
     }
 
-    public String changeVowels2(String word) {
+    public String changeVowels2(String word) {          //műveletigényesebb a 2.megoldás
         for (char c : VOWELS_CHAR) {
                 word =  word.replace(c,'*');
         }

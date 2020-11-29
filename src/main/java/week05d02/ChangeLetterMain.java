@@ -8,5 +8,9 @@ public class ChangeLetterMain {
 
         String result = cl.changeVowels2("arvizturotukorfurogep");
         System.out.println(result);
+
+
+        String result2 = cl.changeVowels("arvizturotukorfurogep");
+        System.out.println(result2);
     }
 }
