@@ -14,7 +14,7 @@ public class Store {
         return products;
     }
 
-    public int getProductByCategoryName(String categoryName) {
+    public int getProductByCategoryName(Category categoryName) {
         int count = 0;
         for (Product p : products) {
             if (p.getCategory().equals(categoryName)) {
