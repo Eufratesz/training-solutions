@@ -15,6 +15,9 @@ public class Biscuit {
     private int gramAmount;
 
     public Biscuit(BiscuitType type, int gramAmount) {
+        if ( gramAmount < 0 ) {
+            throw new IllegalArgumentException("Amount cannot be a negative number");
+        }
         this.type = type;
         this.gramAmount = gramAmount;
     }
@@ -25,7 +28,7 @@ public class Biscuit {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Biscuit(BiscuitType.OREO, 300));
+        System.out.println(new Biscuit (BiscuitType.OREO, 300));
         System.out.println(new Biscuit(BiscuitType.PILOTA_KEKSZ, 500));
         System.out.println(new Biscuit(BiscuitType.VANILIAS_KARIKA, 1000));
 
