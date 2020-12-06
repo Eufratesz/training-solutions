@@ -22,7 +22,7 @@ public class BodyMass {
     }
 
     double bodyMassIndex() {
-        return getWeight() / (getHeight() * getHeight());       //jó így getterekkel is?
+        return weight / (height * height);       //getterekkel írtam eredetileg. Úgy is jó lett volna?
 
     }
 
