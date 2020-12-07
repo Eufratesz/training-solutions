@@ -11,18 +11,23 @@ package week07d01;
 
 public class MathAlgorithms {
 
-    private int x;
-    private int y;
 
-
-    public boolean isPrime(int x) {
-        int x != int y;
-        if (x == 0 || x ==1) throw new IllegalArgumentException("Nem primszám.");
-        if (x< 0) throw new IllegalArgumentException("Negatív szám.");
-        if ( x %  y > 1) {
+    public static boolean isPrime(int x) {
+        if (x < 1) {
+            throw new IllegalArgumentException("Wrong parameter!");
+        }
+        int divisors = 0;
+        for (int i = 1; i <= x; i++) {
+            if (x % i == 0) {
+                divisors++;
+            }
+        }
+        if (divisors == 2) {
             return true;
         }
+        return false;
     }
-
-
 }
+
+
+
