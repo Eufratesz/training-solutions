@@ -1,6 +1,7 @@
 package training.methodchain;
 
 public class Trainer {
+
     private String name;
     private int age;
 
@@ -10,13 +11,27 @@ public class Trainer {
     }
 
     public String getName() {
+
         return name;
     }
 
     public int getAge() {
+
         return age;
     }
 }
+/*
+Ezt nem nagyon használjuk, mert így a setterek nem felelnek meg a Javabeans szabványnak.
+    public Trainer setName(String name) {
+        this.name = name;
+        return this;
+    }
 
+    public Trainer setAge(int age) {
+        this.age = age;
+        return this;
+    }
+}
+*/
 
 

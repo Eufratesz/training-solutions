@@ -4,6 +4,7 @@ public class TrainerBuilder {
     private String name;
     private int age;
 
+//Olyan metódusok, amelyek visszatérési értéke önmaga:
     public TrainerBuilder withName(String name) {
         this.name = name;
         return this;
