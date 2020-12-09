@@ -12,10 +12,10 @@ import java.util.List;
 public class NumberList {
     public boolean isIncreasing(List<Integer> numberList) {
         for (int i=1; i < numberList.size(); i++)
-        if (numberList.get(i-1) <= numberList.get(i)) {
-            return true;
+        if (numberList.get(i-1) > numberList.get(i)) {
+            return false;
         }
-        return false;
+        return true;
 
     }
 

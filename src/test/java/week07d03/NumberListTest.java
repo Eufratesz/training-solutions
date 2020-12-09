@@ -12,10 +12,9 @@ public class NumberListTest {
 
     @Test
     public void isIncreasingTest() {
-        NumberList numberlist = new NumberList();
-        List<Integer> numberList = Arrays.asList(1,2,3,3,3,5);
-//Ez nem  megy:(
-        assertTrue(numberList.isIncreasing());
-        assertFalse(
+        NumberList numberList = new NumberList();
+
+        assertTrue(numberList.isIncreasing(Arrays.asList(1,2,3,3,3,5)));
+        assertFalse(numberList.isIncreasing(Arrays.asList(1,2,3,2,0,5)));
     }
 }
