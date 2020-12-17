@@ -14,7 +14,7 @@ public class Human {
         this.age = age;
     }
 
-    public static int getDefaultFreeTime() {
+    public int getFreeTime() {
         return DEFAULT_FREE_TIME;
     }
 

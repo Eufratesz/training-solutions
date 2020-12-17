@@ -19,4 +19,9 @@ public class Trainer extends Human{
     public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
+
+    @Override
+    public int getFreeTime() {
+        return super.getFreeTime() - courses.size();
+    }
 }
