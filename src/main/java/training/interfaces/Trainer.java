@@ -6,7 +6,7 @@ public class Trainer implements HasName{
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     public int getYearOfBirth(){
