@@ -45,6 +45,12 @@ public class Capsules {
         capsules.removeFirst();
         System.out.println(capsules.getColours());
 
+        List<String> remaining =capsules.getColours();
+        System.out.println(remaining);
+        remaining.clear();
+        System.out.println(remaining);
+        System.out.println(capsules.getColours());  //Igen, a clear metódus hatással volt az eredeti listára.
+
 
 
 
