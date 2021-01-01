@@ -21,6 +21,7 @@ public class ArraysMain {
         System.out.println(Arrays.toString(a1));
 
         System.out.println(Arrays.toString(Arrays.copyOfRange(a1,1, 2)));
+        System.out.println(Arrays.toString(Arrays.copyOf(a2, 4)));
 
     }
 }
