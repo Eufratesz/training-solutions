@@ -26,6 +26,6 @@ public class Employee {
     public List<String> getCourses(){
         //return courses;
     //    return new ArrayList<>(courses); másolatot ad vissza, így az eredeti lista változatlan maread.
-        return List.copyOf(courses);
+        return List.copyOf(courses);        //UnsopportedOperationException-t dob.
     }
 }
