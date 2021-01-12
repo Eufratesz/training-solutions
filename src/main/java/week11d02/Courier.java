@@ -26,8 +26,8 @@ public class Courier {
             }
 
         }
-        if ( a !=0){
-            Ride previous = rides.get(a-1);
+        if ( rides.size() !=0){
+            Ride previous = rides.get(rides.size()-1);
             if (previous.getDay() == ride.getDay() && previous.getRide()+1 == ride.getRide()) {
                 rides.add(ride);
             }
