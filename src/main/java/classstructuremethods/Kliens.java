@@ -1,4 +1,4 @@
-package classsturcturemethods;
+package classstructuremethods;
 
 public class Kliens {
     private String name;

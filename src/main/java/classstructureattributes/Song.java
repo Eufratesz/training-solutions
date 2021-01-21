@@ -1,6 +1,4 @@
-package classstuctureattributes;
-
-import java.util.Scanner;
+package classstructureattributes;
 
 public class Song {
 
