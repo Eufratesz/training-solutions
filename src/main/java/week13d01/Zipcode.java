@@ -6,45 +6,54 @@ Add vissza a leghosszabb nevű várost!
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Zipcode {
 
     public String maxtLengthCityFromFile(String fileName) {
-        String maxLength ="";
+        String result = "";
         try (BufferedReader br = Files.newBufferedReader(Path.of(fileName))) {
-            String line;
+
             skipHeader(br);
-            while ((line= br.readLine())!= null) {
-                String[] splittedLine = line.split(";");
-                if(splittedLine[1].length() > maxLength.length()) {
-                    maxLength = splittedLine[1];
-                }
-            }
+            result = maxLengthCity(br);
+
+
         } catch (IOException ioe) {
             throw new IllegalStateException("Cannot read file", ioe);
 
         }
-        return maxLength;
-
-        }
-        //a whitespace-eket hagyja figyelmen kívül.
-        private String splitLine(String line) {
-        String[]temp = line.split(";");
-        return temp[1].trim();
+        return result;
     }
-// ne vegye figyelembe a legelső sort, a táblázat fejlécét:
+
+    private String maxLengthCity(BufferedReader br) throws IOException {
+        String maxLength = "";
+        int lineNumber = 0;
+        String line;
+        while ((line = br.readLine()) != null) {
+            String city = splitLine(line, lineNumber);
+            if (city.length() > maxLength.length()) {
+                maxLength = city;
+            }
+        }
+        return maxLength;
+    }
+
+
+    //a whitespace-eket hagyja figyelmen kívül.
+    private String splitLine(String line, int lineNumber) throws IOException {
+        String[] temp = line.split(";");
+        if (temp.length > 0) {
+            return temp[1].trim();
+        }
+        throw new IOException("Wrong: " + line + "In line" + lineNumber);
+    }
+
+    // ne vegye figyelembe a legelső sort, a táblázat fejlécét:
     private void skipHeader(BufferedReader bufferedReader) throws IOException {
         bufferedReader.readLine();
     }
-
-    public static void main(String[] args) {
-        Zipcode zc = new Zipcode();
-    }
 }
 
 
@@ -52,43 +61,7 @@ public class Zipcode {
 
 
 
-    //private List<Zipcode> cities = new ArrayList<>();
-/*
-    public void readAndAddCities() {
 
 
-
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[]temp = line.split(";");
-                Zipcode zipcode= new Zipcode(temp[0],temp[1]);
-                zipcodes.add(zipcode);
-                for(zipcode : zipcodes){
-                   if(zipcode.getName().length()
-                           temp[1].length()
-            }
-        } catch (
-                IOException ioe) {
-            throw new IllegalStateException("Cannot read file");
-
-        }
-    }
-
-    public String findLongestName(){
-        Path file = Path.of("zipcodes_and_cities");
-        String result = null;
-
-
-        for(Zipcode city: zipcodes) {
-            if(city.getName().length()
-                    city.getName().length()){
-
-            }
-        }
-    }
-
-
-
-}
 
 
