@@ -9,7 +9,7 @@ public class EmployeeService {
 
 
        try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-               EmployeeService.class.getResourceAsStream("/employees.txt")))) {
+               EmployeeService.class.getResourceAsStream("/ioreaderclasspath/employeesclasspath.txt")))) {
            String line;
            while ((line = reader.readLine()) != null) {
                System.out.println(line);
