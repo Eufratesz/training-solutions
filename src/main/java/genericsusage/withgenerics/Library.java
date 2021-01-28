@@ -6,14 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    /*
-    List<Book> books = new ArrayList<>();
 
-    public List<Book> getBooks() {
-        return new ArrayList<>();
-    }
-
-     */
 
     public Book getFirstBook(List<Book>books) {
         if(books == null) {
