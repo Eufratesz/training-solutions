@@ -1,3 +1,4 @@
+/*
 package staticattrmeth;
 
 import org.junit.jupiter.api.Test;
@@ -46,3 +47,6 @@ public class BankTransactionTest {
         assertEquals(new BigDecimal("0"), BankTransaction.getSumOfTrx());
     }
 }
+
+
+ */
