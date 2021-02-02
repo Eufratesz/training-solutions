@@ -15,9 +15,9 @@ class LibraryManagerTest {
 
     @BeforeEach
     public void bookSetShoudBeCreated(){
-        Set<Book>libraryBooks = new HashSet<>(Arrays.asList(new Book(12345, "Animal Farm", "George Orwell"),
-                new Book(67890, "And there were none", "Agatha Christie"),
-                new Book(28374, "1984", "George Orwell")));
+        Set<Book>libraryBooks = new HashSet<>(Arrays.asList(new Book("Animal Farm", "George Orwell", 12345),
+                new Book("And there were none", "Agatha Christie", 67890),
+                new Book("1984", "George Orwell", 28374)));
         manager = new LibraryManager(libraryBooks);
 
     }
