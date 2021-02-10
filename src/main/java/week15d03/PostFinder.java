@@ -3,6 +3,7 @@ package week15d03;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PostFinder {
     /*
@@ -27,13 +28,12 @@ Tároljunk egy List<Post> objektumot a PostFinder osztályban, melyet konstrukto
         this.postList = postList;
     }
 
-    public List<Post> findPostsFor(String user) throws IllegalArgumentException{
-
+    public List<Post> findPostsFor(String user) {
+        Objects.requireNonNull(user, "User is null!");
         List<Post> result = new ArrayList<>();
         for (Post p : postList) {
-            if(p.getContent().isEmpty() || p.getTitle().isEmpty())
-                throw new IllegalArgumentException ("Title or content must not be empty");
-            if (user.equals(p.getOwner()) && (p.getPublishedAt().isBefore(LocalDate.now()))){
+            if(!p.getContent().isEmpty() && !p.getTitle().isEmpty() &&
+            user.equals(p.getOwner()) && (p.getPublishedAt().isBefore(LocalDate.now()))){
                 result.add(p);
             }
         }
