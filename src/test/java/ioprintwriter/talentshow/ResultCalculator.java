@@ -95,5 +95,11 @@ public class ResultCalculator {
         return null;
     }
 
+    public List<Vote> getVotes() {
+        return votes;
+    }
 
+    public List<Production> getProductions() {
+        return productions;
+    }
 }
