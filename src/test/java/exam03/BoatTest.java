@@ -13,3 +13,4 @@ public class BoatTest {
         assertEquals(15, boat.getMaxPassengers());
     }
 }
+

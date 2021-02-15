@@ -1,5 +1,5 @@
 package exam03;
-
+/*
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
@@ -24,3 +24,5 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
     }
 
 }
+
+ */
