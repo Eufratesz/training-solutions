@@ -1,13 +1,16 @@
 package week03d05;
-
+/*
+Összeadás: a konstruktor a műveletet Stringben kapja meg. Készíts egy getResult metódust, amely elvégzi a műveletet
+és visszatér az eredménnyel.
+ */
 public class Operation {
 
     private int leftOperand;
     private int rightOperand;
 
     public Operation(String expression) {
-        //leftOperand = Integer.parseInt(muvelet.substring(0, muvelet.indexOf("+")));
-       // rightOperand = Integer.parseInt(muvelet.substring(muvelet.indexOf("+") +1));
+        //leftOperand = Integer.parseInt(expression.substring(0, expression.indexOf("+")));
+       // rightOperand = Integer.parseInt(expression.substring(expression.indexOf("+") +1));
 
         String left = expression.substring(0, expression.indexOf("+")).trim();
         leftOperand = Integer.parseInt(left);
@@ -36,4 +39,6 @@ public class Operation {
         System.out.println(operation.getRightOperand());
 
     }
+
+
 }
