@@ -30,17 +30,17 @@ public class Phone {
 
     public static void main(String[] args) {
         Phone phone = new Phone("Phone", 16);
-        Phone anotherPhone = new Phone("Phone2", 32);
-        System.out.println("Type: " + phone.getType() + ", memory: " + phone.getMem());
-        System.out.println("Type: " + anotherPhone.getType() + ", memory: " + anotherPhone.getMem());
+        Phone anotherPhone = new Phone ("Phone2", 32);
+        System.out.println("Type: " + phone.getType() +", memory: " + phone.getMem());
+        System.out.println("Type: " + anotherPhone.getType() +", memory: " + anotherPhone.getMem());
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type of phone?");
-        String type = scanner.nextLine();
+        String type =scanner.nextLine();
         System.out.println("Size of memory?");
         int mem = scanner.nextInt();
         Phone thirdPhone = new Phone(type, mem);
-        System.out.println("Type: " + thirdPhone.getType() + ", memory: " + thirdPhone.getMem());
+        System.out.println("Type: " + thirdPhone.getType() +", memory: " + thirdPhone.getMem());
 
     }
 }
