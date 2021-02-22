@@ -18,3 +18,5 @@ private CruiseClass cruiseClass;
         return cruiseClass;
     }
 }
+
+

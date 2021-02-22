@@ -22,6 +22,8 @@ public class CruiseTest {
         assertEquals(100_000, cruise.getBasicPrice());
     }
 
+
+
     @Test
     void bookPassenger() {
         cruise.bookPassenger(new Passenger("John Doe", CruiseClass.LUXURY));
@@ -90,5 +92,11 @@ public class CruiseTest {
         assertEquals(Map.of(CruiseClass.LUXURY, 2 , CruiseClass.FIRST, 1), result);
     }
 
+
+
 }
+
+
+
+
 
