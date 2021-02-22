@@ -1,6 +1,6 @@
 package exam03retake01;
 
-/*
+
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -24,4 +24,3 @@ public class MailTest {
     }
 }
 
- */
