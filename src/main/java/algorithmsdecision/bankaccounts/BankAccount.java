@@ -3,10 +3,10 @@ package algorithmsdecision.bankaccounts;
 public class BankAccount {
 
     private String nameOfOwner;
-    private int accountNumber;
+    private String accountNumber;
     private int balance;
 
-    public BankAccount(String nameOfOwner, int accountNumber, int balance) {
+    public BankAccount(String nameOfOwner, String accountNumber, int balance) {
         this.nameOfOwner = nameOfOwner;
         this.accountNumber = accountNumber;
         this.balance = balance;
@@ -16,7 +16,7 @@ public class BankAccount {
         return nameOfOwner;
     }
 
-    public int getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 
