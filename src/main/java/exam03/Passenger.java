@@ -2,8 +2,8 @@ package exam03;
 
 public class Passenger {
 
-private String name;
-private CruiseClass cruiseClass;
+    private String name;
+    private CruiseClass cruiseClass;
 
     public Passenger(String name, CruiseClass cruiseClass) {
         this.name = name;
@@ -18,5 +18,3 @@ private CruiseClass cruiseClass;
         return cruiseClass;
     }
 }
-
-

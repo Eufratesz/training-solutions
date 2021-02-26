@@ -1,6 +1,4 @@
-
 package exam03;
-
 
 import java.text.Collator;
 import java.time.LocalDate;
@@ -11,7 +9,7 @@ public class Cruise {
     private Boat boat;
     private LocalDate sailing;
     private double basicPrice;
-    private List<Passenger> passengers = new ArrayList<>();
+    private List<Passenger>passengers = new ArrayList<>();
 
     public Cruise(Boat boat, LocalDate sailing, double basicPrice) {
         this.boat = boat;
@@ -20,70 +18,62 @@ public class Cruise {
     }
 
     public void bookPassenger(Passenger passenger) {
-        if(boat.getMaxPassengers() <= passengers.size()){
-            throw new IllegalArgumentException("Too many passengers.");
+        if(passengers.size()>= boat.getMaxPassengers()){
+            throw new IllegalArgumentException("no more seat in boat");
         }
-        passengers.add(passenger);
-    }
-
-    public double getPriceForPassenger(Passenger passenger){
-        if (passenger.getCruiseClass() == CruiseClass.LUXURY) {
-            return basicPrice *3;
-        }
-        else if (passenger.getCruiseClass() == CruiseClass.FIRST) {
-            return basicPrice *1.8;
-        }
-        else if (passenger.getCruiseClass() == CruiseClass.SECOND){
-            return basicPrice;
-        }
-        else {
-            throw new IllegalArgumentException("No price for class");
+        if(passengers.size()< boat.getMaxPassengers()){
+            passengers.add(passenger);
         }
     }
 
-    public Passenger findPassengerByName(String name){
+    public double getPriceForPassenger(Passenger passenger) {
+        double price = basicPrice * passenger.getCruiseClass().getValue();
+        return price;
+    }
 
-        for(Passenger passenger: passengers){
+    public Passenger findPassengerByName(String name) {
+        Passenger found = null;
+        for(Passenger passenger : passengers){
             if(passenger.getName().equals(name)){
-                return passenger;
-
+                found = passenger;
+                return found;
             }
         }
-        throw new IllegalArgumentException("Cannot find the name: " + name);
+        throw new IllegalArgumentException("not found:" + name);
     }
 
     public List<String> getPassengerNamesOrdered() {
-        List<String> orderedList = new ArrayList<>();
-
-        for(Passenger passenger : passengers){
-            orderedList.add(passenger.getName());
+        List<String> orderedNames = new ArrayList<>();
+        for (Passenger passenger : passengers) {
+            orderedNames.add(passenger.getName());
+            Collections.sort(orderedNames, Collator.getInstance(new Locale("hu", "HU")));
 
         }
-        Collections.sort(orderedList, Collator.getInstance(new Locale("hu", "Hu")));
-        return orderedList;
+        return orderedNames;
     }
 
     public double sumAllBookingsCharged(){
-        double sum = 0.0;
+        Cruise cruise = new Cruise(boat, sailing, basicPrice);
+        double sum =0.0;
         for(Passenger passenger : passengers) {
-            sum+= getPriceForPassenger(passenger);
+            sum += getPriceForPassenger(passenger);
         }
         return sum;
     }
 
     public Map<CruiseClass, Integer> countPassengerByClass(){
-        Map<CruiseClass, Integer> counts = new HashMap<>();
-        for(Passenger passenger :passengers) {
-            if(!counts.containsKey(passenger.getCruiseClass())) {
-                counts.put(passenger.getCruiseClass(), 1);
-            }
-            else {
-                counts.put(passenger.getCruiseClass(), counts.get(passenger.getCruiseClass())+1);
+        Map<CruiseClass, Integer>count = new HashMap<>();
+        for (Passenger passenger : passengers) {
+            if(!count.containsKey(passenger.getCruiseClass())) {
+                count.put(passenger.getCruiseClass(), 1);
 
+            }else{
+                count.put(passenger.getCruiseClass(), count.get(passenger.getCruiseClass())+1);
             }
         }
-        return counts;
+        return count;
     }
+
 
 
 
@@ -101,7 +91,6 @@ public class Cruise {
     }
 
     public List<Passenger> getPassengers() {
-        return passengers;
+        return new ArrayList<>(passengers);
     }
 }
-
