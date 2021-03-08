@@ -16,18 +16,41 @@ public class ActivityDao {
     }
 
 
-    public void insertActivity(Activity activity) {
+    public Activity insertActivity(Activity activity) {
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("insert into activities(start_time, activity_desc, activity_type) values (?,?,?)")) {
+             PreparedStatement stmt = conn.prepareStatement("insert into activities(start_time, activity_desc, activity_type) values (?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
             stmt.setTimestamp(1, Timestamp.valueOf(activity.getStartTime()));
             stmt.setString(2, activity.getDesc());
             stmt.setString(3, activity.getType().toString());
             stmt.executeUpdate();
 
+            return getIdFromStatement(activity, stmt);
+
         } catch (SQLException sqlException) {
             throw new IllegalStateException("Cannot connect", sqlException);
         }
     }
+
+
+    private Activity getIdFromStatement(Activity activity, PreparedStatement stmt) throws SQLException {
+        try(ResultSet rs = stmt.getGeneratedKeys()) {
+            if (rs.next()) {
+                long id = rs.getLong(1);
+                return new Activity(id, activity.getStartTime(), activity.getDesc(), activity.getType());
+            }
+        }
+        throw new IllegalStateException("cannot get key");
+    }
+
+//    public String createStatementForMoreInsert(int numberOfElements){
+//        StringBuilder sb = new StringBuilder("insert into activities(start_time, activity_desc, activity_type) values");
+//
+//        for(int i =0; i<numberOfElements; i++){
+//            sb.append("(?,?,?)");
+//        }
+//        return sb.toString();
+//
+//    }
 
     public Activity selectById(long id) {
         try (Connection conn = dataSource.getConnection();
@@ -91,7 +114,7 @@ public class ActivityDao {
             return selectByPreparedStatement(stmt);
 
         } catch (SQLException sqlException) {
-            throw new IllegalArgumentException("Connection failed", sqlException);
+            throw new IllegalStateException("Connection failed", sqlException);
         }
     }
 

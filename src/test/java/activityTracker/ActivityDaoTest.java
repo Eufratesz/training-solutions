@@ -60,7 +60,19 @@ class ActivityDaoTest {
     @Test
     void beforeDateTest(){
         assertEquals(2, activityDao.activitiesBeforeDate(LocalDate.of(2021, 2, 12)).size());
+
+
+    //    System.out.println(activityDao.createStatementForMoreInsert(5));
     }
+
+    @Test
+    void selectById(){
+        Activity activity = new Activity(LocalDateTime.now(), "Biking in Mecsek", ActivityType.BIKING);
+        Activity result = activityDao.insertActivity(activity);
+
+        assertEquals(activity.getDesc(), activityDao.selectById(result.getId()).getDesc());
+    }
+
 
 
 
