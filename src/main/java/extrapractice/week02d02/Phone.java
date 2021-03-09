@@ -1,4 +1,4 @@
-package week02d02;
+package extrapractice.week02d02;
 
 import java.util.Scanner;
 
@@ -29,18 +29,20 @@ public class Phone {
     }
 
     public static void main(String[] args) {
-        Phone phone = new Phone("Phone", 16);
-        Phone anotherPhone = new Phone ("Phone2", 32);
-        System.out.println("Type: " + phone.getType() +", memory: " + phone.getMem());
-        System.out.println("Type: " + anotherPhone.getType() +", memory: " + anotherPhone.getMem());
+        Phone phone = new Phone("Phone1", 64);
+        Phone otherPhone = new Phone("Phone2", 128);
+        System.out.println("Type: " + phone.getType() + " memory: " + phone.getMem());
+        System.out.println("Type: " + otherPhone.getType() + " memory: " + otherPhone.getMem());
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Type of phone?");
-        String type =scanner.nextLine();
-        System.out.println("Size of memory?");
+        String type = scanner.nextLine();
+        System.out.println("Memory?");
         int mem = scanner.nextInt();
+        scanner.nextLine();
+        Phone thirdPhone = new Phone(type, mem);
+        System.out.println("Data of your phone: " + type + " " + thirdPhone.mem);
 
-        System.out.println("Type: " + type +", memory: " + mem);
 
     }
 }
