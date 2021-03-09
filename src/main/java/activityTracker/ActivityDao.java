@@ -23,12 +23,51 @@ public class ActivityDao {
             stmt.setString(2, activity.getDesc());
             stmt.setString(3, activity.getType().toString());
             stmt.executeUpdate();
+            Activity result = getIdFromStatement(activity, stmt);
+            insertActivityTrackPoints(activity.getTrackPoints(), result.getId());
 
-            return getIdFromStatement(activity, stmt);
+            return result;
 
         } catch (SQLException sqlException) {
             throw new IllegalStateException("Cannot connect", sqlException);
         }
+    }
+
+
+    private void insertActivityTrackPoints(List<TrackPoint> trackPoints, long activityId){
+        try(Connection conn = dataSource.getConnection()){
+            conn.setAutoCommit(false);
+
+        try(PreparedStatement stmt = conn.prepareStatement("insert into track_points(act_time, lat, lon, activity_id) values (?,?,?,?)")){
+            for(TrackPoint trackPoint : trackPoints){
+                if(!isValidLatLon(trackPoint.getLat(), trackPoint.getLon())){
+                    throw new IllegalArgumentException("invalid lat or lon");
+                }
+                stmt.setDate(1, Date.valueOf(trackPoint.getTime()));
+                stmt.setDouble(2, trackPoint.getLat());
+                stmt.setDouble(3, trackPoint.getLon());
+                stmt.setLong(4, activityId);
+                stmt.executeUpdate();
+            }
+            conn.commit();
+            }catch (IllegalArgumentException iae){
+            conn.rollback();
+
+        }
+
+        }catch (SQLException sqlException){
+            throw new IllegalStateException("Cannot connect", sqlException);
+        }
+    }
+
+    private boolean isValidLatLon(double lat, double lon){
+        if(lat> 90 || lat < -90){
+            return false;
+        }
+        if (lat> 180 || lon < -180){
+            return false;
+        }
+        return true;
     }
 
 
@@ -54,10 +93,15 @@ public class ActivityDao {
 
     public Activity selectById(long id) {
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("select * from activities where id = ?")) {
-            stmt.setLong(1, id);
-            List<Activity> result = selectByPreparedStatement(stmt);
+             PreparedStatement stmt1= conn.prepareStatement("select * from activities where id = ?");
+             PreparedStatement stmt2= conn.prepareStatement("select * from track_points where activity_id = ?")) {
+
+            stmt1.setLong(1, id);
+            List<Activity> result = selectActivityByPreparedStatement(stmt1);
             if (result.size() == 1) {
+                stmt2.setLong(1, id);
+                List<TrackPoint>resultPoints= selectTrackPointsByPreparedStatement(stmt2);
+                result.get(0).addTrackPoints(resultPoints);
                 return result.get(0);
             }
             throw new IllegalArgumentException("not found!");
@@ -68,7 +112,7 @@ public class ActivityDao {
 
     }
 
-    private List<Activity> selectByPreparedStatement(PreparedStatement stmt) {
+    private List<Activity> selectActivityByPreparedStatement(PreparedStatement stmt) {
         List<Activity> result = new ArrayList<>();
         try (ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -82,11 +126,25 @@ public class ActivityDao {
 
     }
 
+    private List<TrackPoint> selectTrackPointsByPreparedStatement(PreparedStatement stmt) {
+        List<TrackPoint> result = new ArrayList<>();
+        try (ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                TrackPoint trackPoint = new TrackPoint(rs.getLong("id"), rs.getDate("act_time").toLocalDate(), rs.getDouble("lat"), rs.getDouble("lon"));
+                result.add(trackPoint);
+            }
+            return result;
+        } catch (SQLException sqlException) {
+            throw new IllegalArgumentException("wrong statement", sqlException);
+        }
+
+    }
+
     public List<Activity> selectAllActivities() {
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("select * from activities")) {
-            return selectByPreparedStatement(stmt);
+            return selectActivityByPreparedStatement(stmt);
 
         } catch (SQLException sqlException) {
             throw new IllegalArgumentException("Connection failed", sqlException);
@@ -97,7 +155,7 @@ public class ActivityDao {
         try (Connection conn = dataSource.getConnection();
              PreparedStatement stmt = conn.prepareStatement("select * from activities where activity_type = ?")) {
             stmt.setString(1, type.toString());
-            return selectByPreparedStatement(stmt);
+            return selectActivityByPreparedStatement(stmt);
         } catch (SQLException sqlException) {
             throw new IllegalStateException("Connection failed", sqlException);
         }
@@ -111,7 +169,7 @@ public class ActivityDao {
 
             LocalDateTime actualDate = date.atTime(0, 0); //LocalDateTime ->LocalDate
             stmt.setTimestamp(1, Timestamp.valueOf(actualDate));
-            return selectByPreparedStatement(stmt);
+            return selectActivityByPreparedStatement(stmt);
 
         } catch (SQLException sqlException) {
             throw new IllegalStateException("Connection failed", sqlException);
