@@ -23,11 +23,7 @@ public class Product {
 
     }
 
-    public boolean haveSimilarCode(Product p) {
-        int difference = code.length() - p.code.length();
-        boolean similarCode = difference >= -1 || difference <= 1;
-        return similarCode;
-    }
+
 
     public boolean areTheyEqual(Product p) {
         boolean codeDifference = Math.abs(code.length() - p.code.length()) <=1;
@@ -42,8 +38,7 @@ public class Product {
         Product fourthProduct = new Product("alma", "144");
 
         System.out.println(firstProduct.haveSameName(thirdProduct));
-        System.out.println(thirdProduct.haveSimilarCode(fourthProduct));
-        System.out.println(firstProduct.haveSimilarCode(secondProduct));
+
 
         System.out.println(firstProduct.areTheyEqual(secondProduct));
         System.out.println(firstProduct.areTheyEqual(thirdProduct));
