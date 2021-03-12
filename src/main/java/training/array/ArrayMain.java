@@ -1,5 +1,7 @@
 package training.array;
 
+import java.util.Arrays;
+
 public class ArrayMain {
 
     public static void main(String[] args) {
@@ -24,18 +26,18 @@ public class ArrayMain {
 //
 
 
-        String[] fruits = {"apple", "peach", "plum", "orange"};
+        String[] fruits = {"apple", "peach", "plum", "orange", "pineapple", "banana"};
         for(String fruit: fruits) {
             System.out.println(fruit);
         }
 
         String[] favouriteFruits = new String[2];
         System.arraycopy(fruits, 1, favouriteFruits, 0, 2);
-        System.out.println(favouriteFruits);
+        System.out.println(Arrays.asList(favouriteFruits));
 
         String[] myFavourites = new String [4];
-        System.arraycopy(fruits, 2, myFavourites, 0, 3);
-        System.out.println(myFavourites);
+        System.arraycopy(fruits, 2, myFavourites, 0, 4);
+        System.out.println(Arrays.asList(myFavourites));
 
 
 
