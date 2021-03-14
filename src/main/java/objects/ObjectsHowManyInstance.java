@@ -17,19 +17,10 @@ public class ObjectsHowManyInstance {
         book5 = new Book();
         book6 = null;
 
-   /*
 
-a kiíratás nem tökéletes:(
-        System.out.println("book 1: " + objectsHowManyInstance.toString().);
-        System.out.println("book 2: " + book2);
-        System.out.println("book 3: " + book3);
-        System.out.println("book 4: " + book4);
-        System.out.println("book 5: " + book5);
-        System.out.println("book 6: " + book6);
-        System.out.println("book 7: " + book7);
-    }
 
-    */
+
+
 
     }
 }
