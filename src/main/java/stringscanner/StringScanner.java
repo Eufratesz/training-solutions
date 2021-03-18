@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 public class StringScanner {
 
-    Scanner scanner = new Scanner(System.in);
-
     public int readAndSumValues(String intString, String delimiter) {
 
         try (Scanner scanner = new Scanner(intString)) {
