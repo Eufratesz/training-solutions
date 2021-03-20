@@ -16,10 +16,10 @@ class TrainerTest {
     }
 
 
-    @Test
-    public void testCreate2(){
-        Trainer t = new Trainer("John Doe");
-        assertEquals(1, Trainer.getNumberOfTrainers());
-
-    }
+//    @Test
+//    public void testCreate2(){
+//        Trainer t = new Trainer("John Doe");
+//        assertEquals(1, Trainer.getNumberOfTrainers());
+//
+//    }
 }
