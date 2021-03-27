@@ -11,7 +11,8 @@ class TrainerTest {
 
     @Test
     public void testCreate(){
-        System.out.println(new Trainer("John Doe", 30, Collections.emptyList()));
+        Trainer trainer = new Trainer("John Doe", 30, Arrays.asList(new Course("Course1")));
+        assertEquals(3, trainer.getFreeTime());
     }
 
 }
