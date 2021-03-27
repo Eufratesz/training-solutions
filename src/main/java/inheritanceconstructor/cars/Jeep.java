@@ -28,7 +28,7 @@ public class Jeep extends Car {
         return ((super.getFuel() + extraFuel) - distance * super.getFuelRate() / 100) >= 0.0;
     }
 
-
+    @Override
     public void drive(int km) {
         if (!isEnoughFuelJeep(km)) {
             throw new RuntimeException("Not enough fuel available!");
@@ -42,7 +42,7 @@ public class Jeep extends Car {
 
     }
 
-
+    @Override
     public double calculateRefillAmount() {
         return (super.getTankCapacity() + extraCapacity) - (super.getFuel() + extraFuel);
     }
