@@ -6,12 +6,12 @@ public interface Valued {
 
     double getValue();
 
-    static double sum(List<Valued> valuedList) {
+    static double sum(List<Valued>items){
         double sum = 0;
-        for (Valued item : valuedList) {
+        for(Valued item: items){
             sum += item.getValue();
         }
-       return sum;
+        return sum;
     }
 
 }
