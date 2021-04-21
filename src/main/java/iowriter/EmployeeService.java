@@ -10,12 +10,12 @@ public class EmployeeService {
 
     public static void main(String[] args) {
         Path file = Path.of("employeesiowriter.txt");
-        List<String> employees = List.of("John Doe", "Jane Doe", "Jack Doe");
+        List<String> employees = List.of("John Doe", "Jane Doe", "Jack Doe", "John Smith");
 
         try (BufferedWriter writer = Files.newBufferedWriter(file)) {
             for(String employee : employees){
-                writer.write(employee);
-                writer.write("\n");
+                writer.write(employee + "\n");
+
             }
         } catch (IOException ioe) {
             throw new IllegalStateException("Cannot write file", ioe);
