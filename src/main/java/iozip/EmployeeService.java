@@ -11,7 +11,7 @@ import java.util.zip.ZipOutputStream;
 public class EmployeeService {
 
     public static void main(String[] args) {
-        Path path = Path.of("src/main/resources/dataiozip.zip");
+        Path path = Path.of("dataiozip.zip");
         try(ZipOutputStream os = new ZipOutputStream(new BufferedOutputStream((Files.newOutputStream(path))))) {
             os.putNextEntry(new ZipEntry("dataiozip.dat"));
             for (int i=0; i < 1100; i++) {
