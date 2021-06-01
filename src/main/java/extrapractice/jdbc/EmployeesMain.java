@@ -14,26 +14,23 @@ public class EmployeesMain {
             dataSource.setUrl("jdbc:mariadb://localhost:3306/employees?useUnicode=true");
             dataSource.setUser("employees");
             dataSource.setPassword("employees");
-        }
-        catch (SQLException se) {
+        } catch (SQLException se) {
             throw new IllegalStateException("Can not create data source", se);
         }
 
 
-            try (
-                    Connection conn = dataSource.getConnection();
-                    PreparedStatement stmt = conn.prepareStatement("insert into employees(emp_name) values (?)")){
-                stmt.setString(1, "Jack Doe");
-                    stmt.executeUpdate();
-            }
-            catch (SQLException se) {
-                throw new IllegalStateException("Cannot insert", se);
-            }
+        EmployeesDao employeesDao = new EmployeesDao(dataSource);
+        employeesDao.createEmployee("Jack Doe");
 
+        List<String>names = employeesDao.listEmployeeNames();
+        System.out.println(names);
 
-        }
-
+        String name = employeesDao.findEmployeeNameById(9L);
+        System.out.println(name);
 
 
     }
+
+
+}
 
