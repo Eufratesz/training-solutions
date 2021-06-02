@@ -41,4 +41,18 @@ class EmployeesDaoTest {
 
     }
 
+    @Test
+    public void testById(){
+        //Given  Először egy olyan művelet, amely az adatbázisba ír.
+        long id = employeesDao.createEmployee("Jack Doe");
+        System.out.println(id);
+        id = employeesDao.createEmployee("Jane Doe");
+        System.out.println(id);
+
+        //When     Aztán egy olyan, amely az adatbázisból olvas.
+        String name = employeesDao.findEmployeeNameById(id);
+        //Then
+        assertEquals("Jane Doe", name);
+    }
+
 }
