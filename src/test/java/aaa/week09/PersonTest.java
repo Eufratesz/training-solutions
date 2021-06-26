@@ -18,7 +18,7 @@ class PersonTest {
     }
 
     @Test
-    void testSetPresentUnderFourteen(){
+    void testSetPresentUnderFourteen() {
         Person p = new Person("John Doe", 12);
         p.setPresent();
         assertNotEquals(null, p.getPresent());

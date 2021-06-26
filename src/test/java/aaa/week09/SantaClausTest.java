@@ -14,7 +14,7 @@ class SantaClausTest {
                 new Person("Jim Smith", 10),
                 (new Person("Sarah", 8)),
                 (new Person("Peter", 16))
-                ));
+        ));
         sc.getThroughChimneys();
 
     }
