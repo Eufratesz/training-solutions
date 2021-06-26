@@ -9,7 +9,7 @@ Leegyszerűsítve a feladat az, hogy a paraméterként átadott tömbben keresse
 
  */
 
-import java.util.Arrays;
+
 import java.util.List;
 
 public class MaxTravel {
