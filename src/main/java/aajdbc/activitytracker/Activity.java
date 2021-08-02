@@ -16,7 +16,7 @@ public class Activity {
         this.type = type;
     }
 
-    public Activity(LocalDateTime startTime, String desc, ActivityType type) {
+    public Activity(LocalDateTime startTime, String basketball_in_park, ActivityType basketball) {
         this.startTime = startTime;
         this.desc = desc;
         this.type = type;
