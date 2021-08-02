@@ -3,10 +3,7 @@ package aajdbc.activitytracker;
 import org.mariadb.jdbc.MariaDbDataSource;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.time.LocalDateTime;
 
 public class ActivityTrackerMain {
@@ -24,28 +21,55 @@ public class ActivityTrackerMain {
         }
     }
 
-    public static void main(String[] args) {
+    public Activity findById(DataSource dataSource, int id) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("select * from activities where id=?")) {
+            ps.setLong(1, id);
 
-        MariaDbDataSource dataSource;
-
-        try {
-            dataSource = new MariaDbDataSource();
-            dataSource.setUrl("jdbc:mariadb://localhost:3306/activitytracker?useUnicode=true");
-            dataSource.setUser("activitytracker");
-            dataSource.setPassword("activitytracker");
-        } catch (SQLException se) {
-            throw new IllegalStateException("Cannot connect", se);
+            return selectActivityTypeByPreparedStatement(ps);
+            } catch (SQLException se) {
+                throw new IllegalStateException("Cannot connect", se);
+            }
         }
 
-        Activity activity1 = new Activity(LocalDateTime.of(2021, 7, 30, 15, 48), "Biking in Mátra", ActivityType.BIKING);
-        Activity activity2 = new Activity(LocalDateTime.of(2021, 7, 31, 15, 48), "Running in Mátra", ActivityType.RUNNING);
-        Activity activity3 = new Activity(LocalDateTime.of(2021, 7, 31, 16, 48), "Hiking in Mátra", ActivityType.HIKING);
 
-        ActivityTrackerMain atm = new ActivityTrackerMain();
-        atm.insertActivity(dataSource, activity1);
-        atm.insertActivity(dataSource, activity2);
-        atm.insertActivity(dataSource, activity3);
-
-
+    private Activity selectActivityTypeByPreparedStatement(PreparedStatement ps) {
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                Activity activity = new Activity(rs.getLong("id"), rs.getTimestamp("start_time").toLocalDateTime(), rs.getString("activity_desc"), ActivityType.valueOf(rs.getString("activity_type")));
+                return activity;
+            }
+            throw new IllegalArgumentException("not found");
+        } catch (SQLException se) {
+            throw new IllegalStateException("Execute failed", se);
+        }
     }
-}
+
+    
+
+        public static void main (String[]args){
+
+            MariaDbDataSource dataSource;
+
+            try {
+                dataSource = new MariaDbDataSource();
+                dataSource.setUrl("jdbc:mariadb://localhost:3306/activitytracker?useUnicode=true");
+                dataSource.setUser("activitytracker");
+                dataSource.setPassword("activitytracker");
+            } catch (SQLException se) {
+                throw new IllegalStateException("Cannot connect", se);
+            }
+
+            Activity activity1 = new Activity(LocalDateTime.of(2021, 7, 30, 15, 48), "Biking in Mátra", ActivityType.BIKING);
+            Activity activity2 = new Activity(LocalDateTime.of(2021, 7, 31, 15, 48), "Running in Mátra", ActivityType.RUNNING);
+            Activity activity3 = new Activity(LocalDateTime.of(2021, 7, 31, 16, 48), "Hiking in Mátra", ActivityType.HIKING);
+
+            ActivityTrackerMain atm = new ActivityTrackerMain();
+            atm.insertActivity(dataSource, activity1);
+            atm.insertActivity(dataSource, activity2);
+            atm.insertActivity(dataSource, activity3);
+
+
+            System.out.println(atm.findById(dataSource, 18));
+        }
+    }
